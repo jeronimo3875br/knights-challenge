@@ -1,0 +1,10 @@
+# Folders
+node_modules/
+routes/
+modules/
+
+# Files
+.env
+yarn.error
+package-error.json
+googlecloud.json
