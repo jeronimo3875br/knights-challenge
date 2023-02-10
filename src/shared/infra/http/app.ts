@@ -2,6 +2,7 @@ import cors from  'cors';
 import 'reflect-metadata';
 import helmet from 'helmet';
 import '@shared/databases/mongodb';
+import { router } from './routes/index';
 import express, { Application } from 'express';
 
 class App {
@@ -10,6 +11,7 @@ class App {
 	constructor(){
 		this.express = express();
 		this.middlewares();
+		this.routes();
 	}
 
 	private middlewares(): void {
@@ -19,6 +21,10 @@ class App {
 		this.express.use(express.urlencoded({ 
 			extended: false
 		}));
+	}
+
+	private routes(): void {
+		this.express.use(router);
 	}
 }
 
