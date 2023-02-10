@@ -13,7 +13,12 @@ export class KnightCreationController {
 
 	public async handle(request: Request, response: Response): Promise<Response> {
 		try {
+			const image = request.file;
 			const knight: IKnight = request.body;
+
+			if (image)
+				knight.image = image.filename;
+			
 			const createKnight = await this.knightCreationUseCase.execute(knight);
 
 			return response.status(201).send({

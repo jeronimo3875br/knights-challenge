@@ -12,7 +12,7 @@ export const knightsWaponModel = model('KnightsWeapons', new Schema(
 		},
 		attr: {
 			type: String,
-			required: true
+			default: 'strength'
 		},
 		equipped: {
 			type: Boolean,
