@@ -1,10 +1,8 @@
 # Folders
 node_modules/
-routes/
-modules/
 
 # Files
 .env
-yarn.error
+yarn-error.log
 package-error.json
 googlecloud.json
