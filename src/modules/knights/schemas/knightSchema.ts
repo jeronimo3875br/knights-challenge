@@ -1,7 +1,7 @@
 import { Joi } from 'celebrate';
 
 export const knightSchema = Joi.object().keys({
-	image: Joi.any(),
+	image: Joi.string(),
 	name: Joi.string().required(),
 	nickname: Joi.string().required(),
 	birthday: Joi.string().required(),

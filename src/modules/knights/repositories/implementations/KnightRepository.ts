@@ -5,6 +5,12 @@ import { knightsAttributesModel } from '../../models/KnightsAttributesModel';
 import { IKnight, IKnightWeapon, IKnightAttributes } from '@modules/knights/dtos/KnightsDTO';
 
 export class KnightRepository implements IKnightRepository {
+	async findKnightByNickname(nickname: string): Promise<void | IKnight> {
+		return await knightsModel.findOne({
+			nickname
+		});
+	}
+
 	async findKnightById(knightId: object): Promise<void | IKnight> {
 		return await (await knightsModel.findById(knightId)).populate([
 			'weapons',
