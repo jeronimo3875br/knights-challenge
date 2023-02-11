@@ -1,10 +1,8 @@
 # Folders
 node_modules/
-modules/upload/
 
 # Files
 .env
 yarn-error.log
 package-error.json
 googlecloud.json
-uploadRoute.ts
