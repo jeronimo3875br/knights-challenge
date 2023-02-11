@@ -5,7 +5,7 @@ import { firebaseBucket } from '@shared/services/firebase';
 import { googleCloud } from '@shared/config/googleCloudConfig';
 
 export class FirebaseImageUploadUseCase {
-	public async execute(image: Express.Multer.File): Promise<string> {
+	public async execute(image: Express.Multer.File, isTestMode: boolean): Promise<string> {
 		const imagePath = path.join(
 			__dirname, '..', '..', '..', '..', 'shared', 'tmp', 'uploads', image.filename
 		);
@@ -16,7 +16,7 @@ export class FirebaseImageUploadUseCase {
 		await uplaodKnightImage[0]
 			.makePublic();
 
-		const removeQRCodeImageFromLocal = await removeFile(imagePath);
+		const removeQRCodeImageFromLocal = await removeFile(isTestMode ? `${imagePath}/testerror` : imagePath);
 
 		if (!removeQRCodeImageFromLocal)
 			throw new AppError({
