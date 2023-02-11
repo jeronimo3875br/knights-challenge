@@ -43,8 +43,6 @@ describe('POST /knights', () => {
 			.send(fakeKnight)
 			.expect(400);
 
-		console.log(response);
-
 		expect(
 			response.body.message === 'There is already a hero registered with that nickname!' ||
 			response.body.message === 'There is already a warrior registered with that nickname!'
