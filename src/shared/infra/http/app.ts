@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import '@shared/databases/mongodb';
 import { router } from './routes/index';
 import express, { Application } from 'express';
+import { errors } from 'celebrate';
 
 class App {
 	public express: Application;
@@ -21,6 +22,7 @@ class App {
 		this.express.use(express.urlencoded({ 
 			extended: false
 		}));
+		this.express.use(errors());
 	}
 
 	private routes(): void {

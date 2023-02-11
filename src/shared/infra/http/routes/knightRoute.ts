@@ -1,7 +1,15 @@
 import { Router } from 'express';
 import { celebrate, Segments } from 'celebrate';
-import { knightSchema } from '@modules/knights/schemas/knightSchema';
-import { knightCreationController } from '@modules/knights/containers/KnightContainer';
+import { 
+	knightSchema, 
+	findKnightById,
+	findKnightByFilter
+} from '@modules/knights/schemas/knightSchema';
+import { 
+	knightCreationController, 
+	findKnightByIdController,
+	findKnightByFilterController
+} from '@modules/knights/containers/KnightContainer';
 
 const knightRouter = Router();
 
@@ -12,6 +20,24 @@ knightRouter.post(
 	}),
 	(request, response) => 
 		knightCreationController.handle(request, response)
+);
+
+knightRouter.get(
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: findKnightById
+	}),
+	(request, response) => 
+		findKnightByIdController.handle(request, response)
+);
+
+knightRouter.get(
+	'/',
+	celebrate({
+		[Segments.QUERY]: findKnightByFilter
+	}),
+	(request, response) => 
+		findKnightByFilterController.handle(request, response)
 );
 
 export { knightRouter };

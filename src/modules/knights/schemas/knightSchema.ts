@@ -20,3 +20,11 @@ export const knightSchema = Joi.object().keys({
 		intelligence: Joi.number().required()
 	}).required()
 });
+
+export const findKnightById = Joi.object().keys({
+	id: Joi.string().required()
+});
+
+export const findKnightByFilter = Joi.object().keys({
+	filter: Joi.string()
+});

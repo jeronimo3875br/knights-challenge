@@ -5,6 +5,22 @@ import { knightsAttributesModel } from '../../models/KnightsAttributesModel';
 import { IKnight, IKnightWeapon, IKnightAttributes } from '@modules/knights/dtos/KnightsDTO';
 
 export class KnightRepository implements IKnightRepository {
+	async findKnightsWarriors(): Promise<IKnight[] | []> {
+		return await knightsModel.find({
+			isHero: false
+		});
+	}
+
+	async findAllKnights(): Promise<[] | IKnight[]> {
+		return await knightsModel.find();
+	}
+
+	async findKnightsHeroes(): Promise<IKnight[] | []> {
+		return await knightsModel.find({
+			isHero: true
+		});
+	}
+
 	async findKnightByNickname(nickname: string): Promise<void | IKnight> {
 		return await knightsModel.findOne({
 			nickname
