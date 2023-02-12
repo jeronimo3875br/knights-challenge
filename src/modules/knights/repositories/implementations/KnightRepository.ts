@@ -5,6 +5,10 @@ import { knightsAttributesModel } from '../../models/KnightsAttributesModel';
 import { IKnight, IKnightWeapon, IKnightAttributes } from '@modules/knights/dtos/KnightsDTO';
 
 export class KnightRepository implements IKnightRepository {
+	async updateKnightById(knightId: object, knight: IKnight): Promise<IKnight> {
+		return await knightsModel.findByIdAndUpdate(knightId, knight);
+	}
+
 	async findKnightsWarriors(): Promise<IKnight[] | []> {
 		return await knightsModel.find({
 			isHero: false
