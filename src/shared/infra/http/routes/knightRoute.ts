@@ -3,11 +3,13 @@ import { celebrate, Segments } from 'celebrate';
 import { 
 	knightSchema, 
 	findKnightById,
+	updateKnightById,
 	findKnightByFilter
 } from '@modules/knights/schemas/knightSchema';
 import { 
 	knightCreationController, 
 	findKnightByIdController,
+	updateKnightByIdController,
 	findKnightByFilterController
 } from '@modules/knights/containers/KnightContainer';
 
@@ -38,6 +40,16 @@ knightRouter.get(
 	}),
 	(request, response) => 
 		findKnightByFilterController.handle(request, response)
+);
+
+knightRouter.put(
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: findKnightById,
+		[Segments.BODY]: updateKnightById
+	}),
+	(request, response) => 
+		updateKnightByIdController.handle(request, response)
 );
 
 export { knightRouter };
