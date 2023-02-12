@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import { Request, Response } from 'express';
 import { inject, injectable } from 'tsyringe';
 import { handleError } from '@shared/utils/handleError';
@@ -14,8 +15,10 @@ export class FindKnightByIdController {
 		const knightId: string = request.params.id;
 
 		try {
+			const knightObjId = new Types.ObjectId(knightId);
+
 			const findKnight = await this.findKnightByIdUseCase
-				.execute(Object(knightId));
+				.execute(knightObjId);
 
 			return response.status(200).send({
 				data: {

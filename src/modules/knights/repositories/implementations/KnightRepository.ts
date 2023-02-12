@@ -28,7 +28,7 @@ export class KnightRepository implements IKnightRepository {
 	}
 
 	async findKnightById(knightId: object): Promise<void | IKnight> {
-		return await (await knightsModel.findById(knightId)).populate([
+		return await (await knightsModel.findById(knightId))?.populate([
 			'weapons',
 			'attributes'
 		]);
