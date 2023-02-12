@@ -4,7 +4,8 @@ import {
 	knightSchema, 
 	findKnightById,
 	updateKnightById,
-	findKnightByFilter
+	findKnightByFilter,
+	turnWarriorIntoHero
 } from '@modules/knights/schemas/knightSchema';
 import { 
 	knightCreationController, 
@@ -49,6 +50,16 @@ knightRouter.put(
 		[Segments.BODY]: updateKnightById
 	}),
 	(request, response) => 
+		updateKnightByIdController.handle(request, response)
+);
+
+knightRouter.delete(
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: findKnightById,
+		[Segments.BODY]: turnWarriorIntoHero
+	}),
+	(request, response) =>
 		updateKnightByIdController.handle(request, response)
 );
 

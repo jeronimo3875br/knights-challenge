@@ -49,3 +49,7 @@ export const updateKnightById =  Joi.object().keys({
 		intelligence: Joi.number()
 	})
 });
+
+export const turnWarriorIntoHero = Joi.object().keys({
+	isHero: Joi.boolean().default(true)
+});
