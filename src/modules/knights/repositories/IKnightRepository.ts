@@ -5,6 +5,9 @@ import {
 } from '../dtos/KnightsDTO';
 
 export interface IKnightRepository {
+    findAllKnights(): Promise<IKnight[] | []>;
+    findKnightsHeroes(): Promise<IKnight[] | []>;
+    findKnightsWarriors(): Promise<IKnight[] | []>;
     createKnight(knight: IKnight): Promise<IKnight>;
     findKnightById(knightId: object): Promise<IKnight | void>;
     findKnightByNickname(nickname: string): Promise<IKnight | void>;

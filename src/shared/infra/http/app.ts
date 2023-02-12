@@ -2,6 +2,7 @@ import cors from  'cors';
 import 'reflect-metadata';
 import helmet from 'helmet';
 import '@shared/databases/mongodb';
+import { errors } from 'celebrate';
 import { router } from './routes/index';
 import express, { Application } from 'express';
 
@@ -21,6 +22,7 @@ class App {
 		this.express.use(express.urlencoded({ 
 			extended: false
 		}));
+		this.express.use(errors());
 	}
 
 	private routes(): void {
