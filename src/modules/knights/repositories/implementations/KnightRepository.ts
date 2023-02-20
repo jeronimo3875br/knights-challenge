@@ -12,23 +12,35 @@ export class KnightRepository implements IKnightRepository {
 	async findKnightsWarriors(): Promise<IKnight[] | []> {
 		return await knightsModel.find({
 			isHero: false
-		});
+		}).populate([
+			'weapons',
+			'attributes'
+		]);
 	}
 
 	async findAllKnights(): Promise<[] | IKnight[]> {
-		return await knightsModel.find();
+		return await knightsModel.find().populate([
+			'weapons',
+			'attributes'
+		]);
 	}
 
 	async findKnightsHeroes(): Promise<IKnight[] | []> {
 		return await knightsModel.find({
 			isHero: true
-		});
+		}).populate([
+			'weapons',
+			'attributes'
+		]);
 	}
 
 	async findKnightByNickname(nickname: string): Promise<void | IKnight> {
 		return await knightsModel.findOne({
 			nickname
-		});
+		}).populate([
+			'weapons',
+			'attributes'
+		]);
 	}
 
 	async findKnightById(knightId: object): Promise<void | IKnight> {
@@ -39,7 +51,10 @@ export class KnightRepository implements IKnightRepository {
 	}
 
 	async createKnight(knight: IKnight): Promise<IKnight> {
-		return await knightsModel.create(knight);
+		return await (await knightsModel.create(knight)).populate([
+			'weapons',
+			'attributes'
+		]);
 	}
 
 	async createKnightWeapon(weapons: IKnightWeapon[]): Promise<IKnightWeapon[]> {

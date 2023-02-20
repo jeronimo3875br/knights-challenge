@@ -3,7 +3,7 @@ import { IDefaultDTO } from '@shared/dtos/IDefaultDTO';
 export interface IKnightWeapon extends IDefaultDTO {
     name: string;
     mod: number;
-    attr: string;
+    attr?: string;
     equipped: boolean;
 }
 
@@ -25,4 +25,6 @@ export interface IKnight extends IDefaultDTO {
     keyAttribute: string;
     image?: string;
     isHero?: boolean;
+    experience: number;
+    attack: number;
 }

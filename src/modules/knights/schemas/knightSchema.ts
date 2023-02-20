@@ -4,21 +4,22 @@ export const knightSchema = Joi.object().keys({
 	image: Joi.string(),
 	name: Joi.string().required(),
 	nickname: Joi.string().required(),
-	birthday: Joi.string().required(),
+	birthday: Joi.any().required(),
 	weapons: Joi.array().items({
-		attr: Joi.string(),
+		attr: Joi.string(), 
 		name: Joi.string().required(),
 		mod: Joi.number().required(),
 		equipped: Joi.boolean().required()
 	}).required(),
 	attributes: Joi.object().keys({
-		wisdom: Joi.number().required(),
-		strength: Joi.number().required(),
-		charisma: Joi.number().required(),
-		dexterity: Joi.number().required(),
-		constitution: Joi.number().required(),
-		intelligence: Joi.number().required()
-	}).required()
+		wisdom: Joi.any().required(),
+		strength: Joi.any().required(),
+		charisma: Joi.any().required(),
+		dexterity: Joi.any().required(),
+		constitution: Joi.any().required(),
+		intelligence: Joi.any().required()
+	}).required(),
+	keyAttribute: Joi.string().required(),
 });
 
 export const findKnightById = Joi.object().keys({

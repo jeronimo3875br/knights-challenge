@@ -32,6 +32,14 @@ export const knightsModel = model('Knights', new Schema(
 		isHero: {
 			type: Boolean,
 			default: false
+		},
+		experience: {
+			type: Number,
+			required: true
+		},
+		attack: {
+			type: Number,
+			required: true
 		}
 	},
 	{

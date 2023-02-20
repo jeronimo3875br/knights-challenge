@@ -7,3 +7,4 @@ tmp/
 yarn-error.log
 package-error.json
 googlecloud.json
+seed.ts
